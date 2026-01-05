@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIY-ECG Web UI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="vendor/uPlot.min.css" />
+    <!--<script src="vendor/webglplot.umd.js"></script>. -->
+    <!-- <script src="https://cdn.jsdelivr.net/gh/danchitnis/webgl-plot@master/dist/webglplot.umd.min.js"></script> -->
+    <!-- <script src="vendor/uPlot.iife.js" defer></script>. -->
+    <!-- webgl-plot UMD bundle (local file) -->
+    <script src="vendor/webglplot.umd.js"></script>
+    <script src="vendor/socket.io.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div id="app">
+      <aside class="control-panel">
+        <h2>Signal Filters</h2>
+        <label class="checkbox">
+          <input type="checkbox" id="filter-hp" data-filter="hp" checked />
+          High-pass
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="filter-no" data-filter="no" checked />
+          Notch
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="filter-tp" data-filter="tp" checked />
+          Low-pass
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="filter-am" data-filter="am" checked />
+          Adaptive mean
+        </label>
+
+        <h2>Display</h2>
+        <label class="checkbox">
+          <input type="checkbox" id="show-threshold" />
+          Show threshold
+        </label>
+        <button id="clear-buffer">Clear buffer</button>
+        <button id="save-buffer">Save buffer as CSV</button>
+        <button id="toggle-pause">Pause display</button>
+      </aside>
+
+      <main>
+        <header class="status-bar">
+          <div>
+            <h1>DIY-ECG Live Viewer</h1>
+            <p class="subtitle">WebSocket-/WebGL-based rendering of UNO Q Bridge data</p>
+          </div>
+          <div class="connection" id="connection-indicator">Disconnected</div>
+        </header>
+
+        <section class="metrics">
+          <div class="metric">
+            <span class="label">Status</span>
+            <span class="value" id="status-text">–</span>
+          </div>
+          <div class="metric">
+            <span class="label">Samples (frame)</span>
+            <span class="value" id="sample-count">0</span>
+          </div>
+          <div class="metric">
+            <span class="label">BPM</span>
+            <span class="value" id="bpm-value">–</span>
+          </div>
+          <div class="metric">
+            <span class="label">Polarity</span>
+            <span class="value" id="polarity-value">–</span>
+          </div>
+          <div class="metric">
+            <span class="label">Sampling rate</span>
+            <span class="value" id="sampling-rate">–</span>
+          </div>
+        </section>
+
+        <section class="chart-card">
+          <div id="ecg-chart"></div>
+          <div class="chart-placeholder" id="chart-placeholder">
+            Waiting for data from the microcontroller…
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
