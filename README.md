@@ -80,3 +80,9 @@ memory bounded while supporting steady real-time updates.
 2. Open the UI in a browser:
    - Local on the UNO Q: `http://localhost:7000`
    - With port forwarding: `http://127.0.0.1:7000`
+
+## Git/SSH setup (multiple UNO Q devices)
+
+If you work from multiple UNO Q devices, use SSH keys for GitHub access. You
+can reuse a single key across devices, but the safer approach is one key per
+device so individual keys can be revoked independently.
