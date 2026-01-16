@@ -1,20 +1,7 @@
 "use strict";
 
 /**
- * DIY-ECG Frontend – webgl-plot renderer (Ringbuffer, no uPlot)
- *
- * Ziele:
- * - Immer die neuesten Samples sofort sichtbar (rechts = "now")
- * - Historie bleibt im Ringbuffer (RING_CAP = 2000)
- * - Kein slice() im Live-Plot (nur beim CSV-Export werden Werte linearisiert)
- * - Fixed Grid: 100 CSS px Abstand (entspricht bei 200 Hz: 5 ms/px -> 0.5 s pro 100 px)
- * - Threshold optional als WebGL-Linie
- * - iOS/Orientation: Soft-Reinit des Plots (kein Page-Reload nötig)
- *
- * webgl-plot UMD Export Varianten (robust):
- * - Globals: WebGLPlot/WebglLine/ColorRGBA
- * - Globals: WebglPlot/WebglLine/ColorRGBA
- * - Namespace: WebglPlotBundle.{WebglPlot|WebGLPlot, WebglLine, ColorRGBA}
+ * DIY-ECG Frontend – webgl-plot renderer (Ringbuffer)
  */
 
 /* ==================== Resolve webgl-plot API (SES-safe) ==================== */
