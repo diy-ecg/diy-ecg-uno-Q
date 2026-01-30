@@ -1,4 +1,4 @@
-# 😀 DIY-ECG
+# DIY-ECG
 
 ECG acquisition and visualization on the Arduino UNO Q. The solution is built
 from three main parts that form a simple end-to-end chain:
